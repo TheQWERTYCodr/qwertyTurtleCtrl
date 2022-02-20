@@ -654,7 +654,17 @@ function websocketLoop()
 		ws.close()
 	end
 end
-
+if not fs.exists("startup.lua") then
+	local file = fs.open("startup.lua","w")
+	local disk = fs.open("disk/startup.lua","r")
+	file.write(disk.readAll())
+	file.close()
+	disk.close()
+	turtle.digDown()
+	turtle.down()
+	turtle.suck()
+	os.reboot()
+end
 while true do
 	local status, res = pcall(websocketLoop)
 	term.clear()
