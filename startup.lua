@@ -660,9 +660,6 @@ if not fs.exists("startup.lua") then
 	file.write(disk.readAll())
 	file.close()
 	disk.close()
-	turtle.digDown()
-	turtle.down()
-	turtle.suck()
 	os.reboot()
 end
 while true do
